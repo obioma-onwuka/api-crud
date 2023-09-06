@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Services\V1\CustomerQuery;
+use App\Filters\V1\CustomersFilter;
 
 // use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
@@ -21,7 +21,7 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new CustomerQuery();
+        $filter = new CustomersFilter();
         $queryItems = $filter->transform($request);
 
         if(count($queryItems) == 0){

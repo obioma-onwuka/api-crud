@@ -5,7 +5,13 @@ namespace App\Filters\V1;
 use Illuminate\Http\Request;
 use App\Filters\ApiFilter;
 
-class CustomersFilter extends ApiFilter {
+class InvoicesFilter extends ApiFilter {
+
+    $table->foreignId('customer_id');
+    $table->integer('amount');
+    $table->string('status');
+    $table->dateTime('billed_date');
+    $table->dateTime('paid_date')->nullable();
 
     protected $safeParams = [
 
@@ -21,7 +27,9 @@ class CustomersFilter extends ApiFilter {
 
     protected $columnMap = [
 
-        'postalCode' => 'postal_code'
+        'customerId' => 'customer_id',
+        'billedDate' => 'billed_date',
+        'paidDate' => 'paid_date',
 
     ];
 
